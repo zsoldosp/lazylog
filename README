@@ -1,0 +1,11 @@
+lazylog is logging facede written in Scala for existing JVM based logging libraries to provide a cleaner API for clients to use.
+
+	if(Logger.IsDebug)
+	{
+		Logger.Debug("Expensively constructed debug message");
+	}
+	
+	
+The purpose is to eliminate the above pattern while keeping the performance benefits (avoiding the creation of unused string objects). This currently achieved by using lazy evaluated parameters on the method facedes.
+
+	Logger.Debug("Expensively constructed debug message");
