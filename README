@@ -8,7 +8,7 @@ libraries to provide a cleaner API for clients to use.
 	
 	
 The purpose is to eliminate the above pattern while keeping the performance
-benefits (avoiding the creation of unused string objects). This currently
-achieved by using lazy evaluated parameters on the method facedes.
+benefits (avoiding the creation of unused string objects). This is achieved 
+by using lazy evaluated parameters for the lazylog facede methods.
 
 	Logger.Debug("Expensively constructed debug message");
