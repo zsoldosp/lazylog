@@ -3,11 +3,11 @@ package com.lazylog
 import org.junit._
 import Assert._
 
+class LoggerStub(val shouldLogWarnings : Boolean) extends AbstractLogger {
+  var logWarningCallCount = 0
+  def logWarning(msg : String) : Unit = { logWarningCallCount += 1 }
+}
 
-  class LoggerStub(val shouldLogWarnings : Boolean) extends AbstractLogger {
-    var logWarningCallCount = 0
-    def logWarning(msg : String) : Unit = { logWarningCallCount += 1 }
-  }
 
 trait TestScenarioInfo {
   def msgFactory = "some message"
