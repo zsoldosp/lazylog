@@ -5,4 +5,10 @@ class LazyLogger (actualLogger : AbstractLogger) {
     if (actualLogger.shouldLogWarnings)
       actualLogger.logWarning(msg)
   }
+
+  def logError(msg : => String) = {
+    if (actualLogger.shouldLogErrors)
+      actualLogger.logError(msg)
+  }
+
 }
