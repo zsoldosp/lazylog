@@ -1,12 +1,10 @@
 <!-- original from http://scriptlandia.blogspot.com/2007/04/how-to-compile-and-run-scala-program.html -->
-<project name="Learning Scala" default="test" basedir=".">
+<project name="LazyLog" default="test" basedir=".">
 	<!-- 
 		0. Define machine specific properties 
 		TODO: extract to properties file
-	-->
-	<property name="scala.home" value="e:/lib/scala-2.7.7.final/" />
-	<property name="junit.version" value="4.8.1" />
-	<property name="junit.home" value="e:/lib/junit${junit.version}/" />
+        -->
+        <property file="build.properties" />
 	<!-- 1. Define common properties. -->
 	<property name="src.dir" value="src"/>
 	<property name="test.dir" value="test"/>
@@ -59,5 +57,6 @@
 			</batchtest>
 		</junit>
 		<fail message="test failed" if="test.failure" />
-	</target>
+         </target>
+        <target name="jar" depends="test" />
 </project>
