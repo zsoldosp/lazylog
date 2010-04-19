@@ -1,14 +1,15 @@
 package com.lazylog
 
 class LazyLogger (actualLogger : AbstractLogger) {
-  def logWarning(msg : => String) = {
-    if (actualLogger.shouldLogWarnings)
-      actualLogger.logWarning(msg)
-  }
+  val warning = new ConditionalLogMethodInvoker (
+    actualLogger.shouldLogWarnings,
+    actualLogger.logWarning
+  )
+  val error = new ConditionalLogMethodInvoker (
+    actualLogger.shouldLogErrors,
+    actualLogger.logError
+  )
+  def logWarning(msg : => String) = warning.log(msg)
 
-  def logError(msg : => String) = {
-    if (actualLogger.shouldLogErrors)
-      actualLogger.logError(msg)
-  }
-
+  def logError(msg : => String) = error.log(msg);
 }
