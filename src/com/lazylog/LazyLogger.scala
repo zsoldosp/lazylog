@@ -9,7 +9,4 @@ class LazyLogger (actualLogger : AbstractLogger) {
     actualLogger.shouldLogErrors,
     actualLogger.logError
   )
-  def logWarning(msg : => String) = warning.log(msg)
-
-  def logError(msg : => String) = error.log(msg);
 }
