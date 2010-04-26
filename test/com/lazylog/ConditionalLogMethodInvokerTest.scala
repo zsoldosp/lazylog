@@ -5,6 +5,20 @@ import Assert._
 
 class ConditionalLogMethodInvokerTest {
   @Test
+  def enabledStatusCanBeChangedAtRuntime = {
+    var counter = 0
+    var enabled = false;
+    val sut = new ConditionalLogMethodInvoker(enabled, _ => { counter += 1; ""})
+
+    enabled = false;
+    sut.log("should not log")
+    assertEquals("logger is disabled, should not have logged", 0, counter)
+
+    enabled = true
+    sut.log("should log")
+    assertEquals("logger is enabled, should have logged", 1, counter)
+  }
+  @Test
   def doesNotForwardMessageWhenDisabled = {
     new ConditionalLogMethodInvoker(false, _ => fail("Shouldn't be called.")).log("something")
   }
