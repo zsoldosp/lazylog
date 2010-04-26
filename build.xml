@@ -26,6 +26,7 @@
 		<pathelement location="${build.dir}"/>
 		<pathelement location="${junit.jar}"/>
 		<pathelement location="${junit-dep.jar}"/>
+		<pathelement location="${log4j.jar}"/>
 	</path>
 
 	<!-- 4. Define scala compiler command. -->
